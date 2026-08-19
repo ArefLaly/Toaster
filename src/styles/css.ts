@@ -1,6 +1,6 @@
 export const TOASTRA_CSS = `
 :root {
-  --toastra-background: rgba(255, 253, 248, 0.92);
+  --toastra-background: #fffdf8;
   --toastra-foreground: #1a1713;
   --toastra-border: rgba(48, 36, 18, 0.14);
   --toastra-shadow:
@@ -22,7 +22,7 @@ export const TOASTRA_CSS = `
 }
 
 [data-toastra-theme="dark"] {
-  --toastra-background: rgba(22, 19, 15, 0.92);
+  --toastra-background: #16130f;
   --toastra-foreground: #f7f0e6;
   --toastra-border: rgba(255, 248, 236, 0.16);
   --toastra-shadow:
@@ -63,8 +63,9 @@ export const TOASTRA_CSS = `
 
 .toastra__viewport--top-center {
   top: calc(var(--toastra-offset, 20px) + env(safe-area-inset-top, 0px));
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin-inline: auto;
 }
 
 .toastra__viewport--top-right {
@@ -80,8 +81,9 @@ export const TOASTRA_CSS = `
 
 .toastra__viewport--bottom-center {
   bottom: calc(var(--toastra-offset, 20px) + env(safe-area-inset-bottom, 0px));
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin-inline: auto;
   flex-direction: column-reverse;
 }
 
@@ -106,10 +108,10 @@ export const TOASTRA_CSS = `
   background: var(--toastra-background);
   color: var(--toastra-foreground);
   box-shadow: var(--toastra-shadow);
-  backdrop-filter: blur(18px);
   font-family: var(--toastra-sans);
+  -webkit-font-smoothing: antialiased;
   transform-origin: center;
-  will-change: transform, opacity;
+  filter: none;
 }
 
 .toastra__toast[data-progress="true"] {
@@ -392,11 +394,11 @@ export const TOASTRA_CSS = `
 }
 @keyframes toastra-in-flip {
   from { opacity: 0; transform: perspective(920px) rotateX(-22deg) translate3d(0, -10px, 0); }
-  to { opacity: 1; transform: perspective(920px) rotateX(0deg) translate3d(0, 0, 0); }
+  to { opacity: 1; transform: none; }
 }
 @keyframes toastra-in-blur {
-  from { opacity: 0; filter: blur(10px); transform: scale(1.045); }
-  to { opacity: 1; filter: blur(0); transform: scale(1); }
+  from { opacity: 0; transform: translate3d(0, 8px, 0) scale(1.02); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
 @keyframes toastra-in-rise {
   from { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.96); }
@@ -438,7 +440,7 @@ export const TOASTRA_CSS = `
   to { opacity: 0; transform: perspective(920px) rotateX(16deg) translate3d(0, -8px, 0); }
 }
 @keyframes toastra-out-blur {
-  to { opacity: 0; filter: blur(8px); transform: scale(0.97); }
+  to { opacity: 0; transform: translate3d(0, 8px, 0) scale(0.98); }
 }
 @keyframes toastra-out-rise {
   to { opacity: 0; transform: translate3d(0, -16px, 0); }
@@ -470,5 +472,4 @@ export const TOASTRA_CSS = `
     filter: none !important;
   }
 }
-
 `;

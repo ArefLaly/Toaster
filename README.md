@@ -312,7 +312,7 @@ Returns the same `toast` API for component use.
 | `gap` | `12` | |
 | `offset` | `16` | Number or CSS length |
 | `swipeDirection` | `horizontal` | `left` `right` `up` `down` `vertical` |
-| `animation` | `pop` | One motion, or `{ enter, exit }` |
+| `animation` | `bounce` | One motion, or `{ enter, exit }` |
 | `toastOptions` | `{}` | Defaults merged into every toast |
 
 ## Advanced Usage

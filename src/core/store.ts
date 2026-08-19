@@ -18,7 +18,7 @@ export const DEFAULT_CONFIG: StoreSnapshot["config"] = {
   gap: 14,
   offset: 20,
   swipeDirection: "horizontal",
-  animation: "pop",
+  animation: "bounce",
   toastOptions: {},
 };
 

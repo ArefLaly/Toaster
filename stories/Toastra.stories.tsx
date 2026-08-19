@@ -25,7 +25,7 @@ function Playground() {
           "radial-gradient(circle at top right, rgba(201, 162, 39, 0.16), transparent 30%), #f4efe6",
       }}
     >
-      <Toastra position="top-right" theme="system" showProgress animation={{ enter: "pop", exit: "blur" }} />
+      <Toastra position="top-right" theme="system" showProgress />
       <p style={{ letterSpacing: "0.18em", textTransform: "uppercase", fontSize: 12, color: "#6b6258", margin: 0 }}>
         React · TypeScript · Next.js
       </p>

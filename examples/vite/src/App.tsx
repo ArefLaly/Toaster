@@ -28,8 +28,8 @@ export function App() {
   const [theme, setTheme] = useState<ToastTheme>("system");
   const [duration, setDuration] = useState(4000);
   const [maxToasts, setMaxToasts] = useState(5);
-  const [enter, setEnter] = useState<ToastMotion>("pop");
-  const [exit, setExit] = useState<ToastMotion>("blur");
+  const [enter, setEnter] = useState<ToastMotion>("bounce");
+  const [exit, setExit] = useState<ToastMotion>("bounce");
 
   return (
     <div className="page">
