@@ -112,6 +112,46 @@ function Playground() {
         >
           Custom
         </button>
+        <button
+          type="button"
+          style={buttonStyle}
+          onClick={() => {
+            void toast
+              .confirm({
+                title: "Delete this employee?",
+                description: "Ada Lovelace will be removed. This cannot be undone.",
+                confirm: "Delete",
+                cancel: "Keep",
+                type: "error",
+              })
+              .then((ok) => {
+                if (ok) toast.success({ title: "Employee deleted", description: "Ada Lovelace was removed." });
+                else toast.info("Delete cancelled");
+              });
+          }}
+        >
+          Delete
+        </button>
+        <button
+          type="button"
+          style={buttonStyle}
+          onClick={() => {
+            void toast
+              .confirm({
+                title: "Log out?",
+                description: "You will need to sign in again to continue.",
+                confirm: "Log out",
+                cancel: "Stay",
+                type: "warning",
+              })
+              .then((ok) => {
+                if (ok) toast.success("You have been logged out");
+                else toast.info("Still signed in");
+              });
+          }}
+        >
+          Logout
+        </button>
         {(
           [
             ["pop", "pop"],
@@ -178,6 +218,57 @@ export const Progress: Story = {
       <button type="button" style={buttonStyle} onClick={() => toast.info({ title: "Watch the bar", description: "It pauses if you hover." })}>
         Progress
       </button>
+    </div>
+  ),
+};
+export const Confirm: Story = {
+  render: () => (
+    <div style={{ padding: 56, background: "#f4efe6", minHeight: "100vh" }}>
+      <Toastra />
+      <h2 style={{ marginTop: 0 }}>Confirm dialogs</h2>
+      <p style={{ color: "#4a433b", maxWidth: 420 }}>
+        SweetAlert-style prompts for delete and logout. Confirm returns a boolean.
+      </p>
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <button
+          type="button"
+          style={buttonStyle}
+          onClick={() => {
+            void toast
+              .confirm({
+                title: "Delete this employee?",
+                description: "This cannot be undone.",
+                confirm: "Delete",
+                cancel: "Keep",
+                type: "error",
+              })
+              .then((ok) => {
+                if (ok) toast.success("Employee deleted");
+              });
+          }}
+        >
+          Delete
+        </button>
+        <button
+          type="button"
+          style={buttonStyle}
+          onClick={() => {
+            void toast
+              .confirm({
+                title: "Log out?",
+                description: "You will need to sign in again.",
+                confirm: "Log out",
+                cancel: "Stay",
+                type: "warning",
+              })
+              .then((ok) => {
+                if (ok) toast.success("Logged out");
+              });
+          }}
+        >
+          Logout
+        </button>
+      </div>
     </div>
   ),
 };
