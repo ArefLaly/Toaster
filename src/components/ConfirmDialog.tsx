@@ -41,38 +41,40 @@ export function ConfirmDialog({ dialog }: { dialog: ConfirmDialogData }) {
         data-type={dialog.type}
         data-danger={dialog.danger ? "true" : "false"}
       >
-        <ToastIcon type={dialog.type} icon={dialog.icon} />
-        <div className="toastra__body">
-          <p className="toastra__title" id={`toastra-confirm-title-${dialog.id}`}>
-            {dialog.title}
-          </p>
-          {dialog.description ? (
-            <p className="toastra__description">{dialog.description}</p>
-          ) : null}
-          <div className="toastra__actions">
-            <button
-              ref={cancelRef}
-              type="button"
-              className="toastra__button toastra__button--cancel"
-              onClick={() => confirmStore.cancel()}
-            >
-              {dialog.cancelLabel}
-            </button>
-            <button
-              ref={confirmRef}
-              type="button"
-              className={[
-                "toastra__button",
-                "toastra__button--action",
-                dialog.danger ? "toastra__button--danger" : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-              onClick={() => confirmStore.confirm()}
-            >
-              {dialog.confirmLabel}
-            </button>
+        <div className="toastra__confirm-main">
+          <div className="toastra__confirm-badge">
+            <ToastIcon type={dialog.type} icon={dialog.icon} />
           </div>
+          <h2 className="toastra__confirm-title" id={`toastra-confirm-title-${dialog.id}`}>
+            {dialog.title}
+          </h2>
+          {dialog.description ? (
+            <p className="toastra__confirm-text">{dialog.description}</p>
+          ) : null}
+        </div>
+        <div className="toastra__confirm-footer">
+          <button
+            ref={cancelRef}
+            type="button"
+            className="toastra__confirm-btn toastra__confirm-btn--ghost"
+            onClick={() => confirmStore.cancel()}
+          >
+            {dialog.cancelLabel}
+          </button>
+          <button
+            ref={confirmRef}
+            type="button"
+            className={[
+              "toastra__confirm-btn",
+              "toastra__confirm-btn--solid",
+              dialog.danger ? "toastra__confirm-btn--danger" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            onClick={() => confirmStore.confirm()}
+          >
+            {dialog.confirmLabel}
+          </button>
         </div>
       </div>
     </div>

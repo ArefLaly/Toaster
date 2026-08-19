@@ -462,8 +462,8 @@ export const TOASTRA_CSS = `
   inset: 0;
   z-index: 10000;
   display: grid;
-  place-items: start center;
-  padding: 12vh 1rem 2rem;
+  place-items: center;
+  padding: 1.25rem;
   pointer-events: auto;
 }
 
@@ -475,24 +475,193 @@ export const TOASTRA_CSS = `
   padding: 0;
   margin: 0;
   cursor: pointer;
-  background: rgba(22, 19, 15, 0.42);
+  background: rgba(12, 10, 8, 0.46);
+  animation: toastra-confirm-backdrop-in 280ms ease both;
 }
 
 .toastra__confirm-card {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
-  gap: 0.85rem 1rem;
-  width: min(22.5rem, 100%);
-  padding: 1.15rem 1.1rem 1.15rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  width: min(22rem, calc(100vw - 2rem));
+  overflow: hidden;
   border: 1px solid var(--toastra-border);
+  border-radius: 0.75rem;
   background: var(--toastra-background);
   color: var(--toastra-foreground);
-  box-shadow: var(--toastra-shadow);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 24px 64px rgba(20, 14, 8, 0.22);
   font-family: var(--toastra-sans);
-  animation: toastra-in-bounce 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: toastra-confirm-card-in 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.toastra__confirm-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.6rem 1.35rem 1.25rem;
+}
+
+.toastra__confirm-badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.toastra__confirm-badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-left: -1.7rem;
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--toastra-accent) 42%, transparent);
+  pointer-events: none;
+  animation: toastra-confirm-ring 720ms 90ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.toastra__confirm-badge .toastra__icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: 0 0 1rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--toastra-accent) 14%, transparent);
+  animation: toastra-confirm-icon-pop 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.toastra__confirm-badge .toastra__glyph {
+  width: 1.65rem;
+  height: 1.65rem;
+  animation: toastra-confirm-glyph-in 520ms 70ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.toastra__confirm-title {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  animation: toastra-confirm-copy-in 480ms 140ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.toastra__confirm-text {
+  margin: 0.45rem 0 0;
+  max-width: 18rem;
+  color: var(--toastra-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  animation: toastra-confirm-copy-in 520ms 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.toastra__confirm-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  padding: 0.95rem 1.15rem 1.15rem;
+  border-top: 1px solid var(--toastra-border);
+  background: color-mix(in srgb, var(--toastra-foreground) 3%, var(--toastra-background));
+  animation: toastra-confirm-footer-in 460ms 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.toastra__confirm-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.45rem;
+  width: 100%;
+  padding: 0 0.85rem;
+  border: 0;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.toastra__confirm-btn--ghost {
+  background: transparent;
+  color: var(--toastra-foreground);
+  border: 1px solid var(--toastra-cancel-border);
+}
+
+.toastra__confirm-btn--ghost:hover {
+  background: color-mix(in srgb, var(--toastra-foreground) 5%, transparent);
+}
+
+.toastra__confirm-btn--solid {
+  background: var(--toastra-action);
+  color: var(--toastra-action-fg);
+}
+
+.toastra__confirm-btn--solid:hover {
+  filter: brightness(1.06);
+}
+
+.toastra__confirm-btn--danger {
+  background: var(--toastra-error);
+  color: #fffdf8;
+}
+
+.toastra__confirm-btn:focus-visible {
+  outline: 2px solid var(--toastra-accent);
+  outline-offset: 2px;
+}
+
+@keyframes toastra-confirm-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes toastra-confirm-card-in {
+  0% { opacity: 0; transform: translate3d(0, -32px, 0) scale(0.9); }
+  52% { opacity: 1; transform: translate3d(0, 8px, 0) scale(1.035); }
+  72% { transform: translate3d(0, -5px, 0) scale(0.985); }
+  86% { transform: translate3d(0, 2px, 0) scale(1.01); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes toastra-confirm-icon-pop {
+  0% { opacity: 0; transform: scale(0.35); }
+  58% { opacity: 1; transform: scale(1.14); }
+  78% { transform: scale(0.94); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes toastra-confirm-glyph-in {
+  0% { opacity: 0; transform: scale(0.45) rotate(-14deg); }
+  70% { opacity: 1; transform: scale(1.08) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes toastra-confirm-ring {
+  0% { opacity: 0.5; transform: scale(0.72); }
+  100% { opacity: 0; transform: scale(1.55); }
+}
+
+@keyframes toastra-confirm-copy-in {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes toastra-confirm-footer-in {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+[data-toastra-theme="dark"] .toastra__confirm-backdrop {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+[data-toastra-theme="dark"] .toastra__confirm-card {
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
 }
 
 .toastra__confirm-card[data-type="success"] { --toastra-accent: var(--toastra-success); }
@@ -511,9 +680,28 @@ export const TOASTRA_CSS = `
   }
 }
 
+@media (max-width: 380px) {
+  .toastra__confirm-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .toastra__confirm-btn--solid {
+    order: -1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .toastra__toast,
+  .toastra__confirm-backdrop,
   .toastra__confirm-card,
+  .toastra__confirm-badge,
+  .toastra__confirm-badge::after,
+  .toastra__confirm-badge .toastra__icon,
+  .toastra__confirm-badge .toastra__glyph,
+  .toastra__confirm-title,
+  .toastra__confirm-text,
+  .toastra__confirm-footer,
+  .toastra__confirm-btn,
   .toastra__glyph--spin,
   .toastra__progress-bar,
   .toastra__button,
