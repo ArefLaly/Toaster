@@ -3,7 +3,7 @@
 ## 0.1.1
 
 - Point package repository, homepage, and issue links to https://github.com/ArefLaly/toastra
-- Add bounce, type, and dark-theme previews to the README
+- Use `docs/media/app.png` as the README preview
 
 ## 0.1.0
 
