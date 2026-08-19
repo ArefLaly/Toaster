@@ -25,7 +25,7 @@ function Playground() {
           "radial-gradient(circle at top right, rgba(201, 162, 39, 0.16), transparent 30%), #f4efe6",
       }}
     >
-      <Toastra position="top-right" theme="system" showProgress />
+      <Toastra position="top-right" theme="system" showProgress animation={{ enter: "pop", exit: "blur" }} />
       <p style={{ letterSpacing: "0.18em", textTransform: "uppercase", fontSize: 12, color: "#6b6258", margin: 0 }}>
         React · TypeScript · Next.js
       </p>
@@ -112,6 +112,31 @@ function Playground() {
         >
           Custom
         </button>
+        {(
+          [
+            ["pop", "pop"],
+            ["bounce", "bounce"],
+            ["flip", "flip"],
+            ["blur", "fade"],
+            ["slide-x", "slide-x"],
+            ["zoom", "scale"],
+          ] as const
+        ).map(([enter, exit]) => (
+          <button
+            key={enter}
+            type="button"
+            style={buttonStyle}
+            onClick={() =>
+              toast.success({
+                title: `${enter} in`,
+                description: `${exit} out`,
+                animation: { enter, exit },
+              })
+            }
+          >
+            {enter}
+          </button>
+        ))}
       </div>
     </div>
   );

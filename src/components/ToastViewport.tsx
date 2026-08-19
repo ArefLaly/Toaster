@@ -21,7 +21,7 @@ export function ToastViewport({
         <Toast
           key={item.id}
           data={item}
-          animation={animation}
+          animation={item.animation ?? animation}
           swipeDirection={swipeDirection}
           edge={edge}
         />

@@ -2,12 +2,11 @@ export const TOASTRA_CSS = `
 :root {
   --toastra-background: rgba(255, 253, 248, 0.92);
   --toastra-foreground: #1a1713;
-  --toastra-border: rgba(48, 36, 18, 0.08);
+  --toastra-border: rgba(48, 36, 18, 0.14);
   --toastra-shadow:
-    0 1px 1px rgba(48, 32, 12, 0.04),
-    0 12px 28px rgba(48, 32, 12, 0.1),
-    0 28px 56px rgba(48, 32, 12, 0.08);
-  --toastra-radius: 18px;
+    0 1px 0 rgba(48, 32, 12, 0.04),
+    0 10px 24px rgba(48, 32, 12, 0.08);
+  --toastra-radius: 0;
   --toastra-success: #0d8052;
   --toastra-error: #c4332b;
   --toastra-warning: #b45309;
@@ -25,7 +24,7 @@ export const TOASTRA_CSS = `
 [data-toastra-theme="dark"] {
   --toastra-background: rgba(22, 19, 15, 0.92);
   --toastra-foreground: #f7f0e6;
-  --toastra-border: rgba(255, 248, 236, 0.08);
+  --toastra-border: rgba(255, 248, 236, 0.16);
   --toastra-shadow:
     0 1px 1px rgba(0, 0, 0, 0.2),
     0 16px 36px rgba(0, 0, 0, 0.38);
@@ -101,9 +100,9 @@ export const TOASTRA_CSS = `
   align-items: start;
   gap: 0.85rem 1rem;
   width: 100%;
-  padding: 1rem 1rem 1.05rem 1.05rem;
+  padding: 1rem 1rem 1.05rem 1.15rem;
   border: 1px solid var(--toastra-border);
-  border-radius: var(--toastra-radius);
+  border-radius: 0;
   background: var(--toastra-background);
   color: var(--toastra-foreground);
   box-shadow: var(--toastra-shadow);
@@ -120,11 +119,10 @@ export const TOASTRA_CSS = `
 .toastra__toast::before {
   content: "";
   position: absolute;
-  inset: 10px auto 10px 0;
+  inset: 0 auto 0 0;
   width: 3px;
-  border-radius: 999px;
+  border-radius: 0;
   background: var(--toastra-accent);
-  opacity: 0.9;
 }
 
 .toastra__toast[data-type="success"] { --toastra-accent: var(--toastra-success); }
@@ -153,7 +151,7 @@ export const TOASTRA_CSS = `
   width: 2.15rem;
   height: 2.15rem;
   margin-top: 0.05rem;
-  border-radius: 12px;
+  border-radius: 2px;
   color: var(--toastra-accent);
   background: var(--toastra-icon-well);
 }
@@ -198,7 +196,7 @@ export const TOASTRA_CSS = `
 .toastra__button {
   appearance: none;
   border: 0;
-  border-radius: 999px;
+  border-radius: 2px;
   min-height: 2rem;
   padding: 0 0.9rem;
   font: inherit;
@@ -237,7 +235,7 @@ export const TOASTRA_CSS = `
   color: var(--toastra-muted);
   width: 1.85rem;
   height: 1.85rem;
-  border-radius: 999px;
+  border-radius: 2px;
   cursor: pointer;
   transition: background 160ms ease, color 160ms ease, transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -265,8 +263,8 @@ export const TOASTRA_CSS = `
   left: 1.05rem;
   right: 1.05rem;
   bottom: 0.45rem;
-  height: 3px;
-  border-radius: 999px;
+  height: 2px;
+  border-radius: 0;
   background: color-mix(in srgb, var(--toastra-accent) 16%, transparent);
   overflow: hidden;
 }
@@ -279,59 +277,174 @@ export const TOASTRA_CSS = `
   border-radius: inherit;
 }
 
-.toastra__toast[data-animation="slide"][data-edge="top"] {
-  animation: toastra-in-top 460ms cubic-bezier(0.16, 1, 0.3, 1);
+.toastra__toast:not([data-leaving="true"])[data-enter="slide"][data-edge="top"] {
+  animation: toastra-in-slide-top 460ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.toastra__toast[data-animation="slide"][data-edge="bottom"] {
-  animation: toastra-in-bottom 460ms cubic-bezier(0.16, 1, 0.3, 1);
+.toastra__toast:not([data-leaving="true"])[data-enter="slide"][data-edge="bottom"] {
+  animation: toastra-in-slide-bottom 460ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.toastra__toast[data-animation="fade"] {
+.toastra__toast:not([data-leaving="true"])[data-enter="slide-x"][data-side="right"] {
+  animation: toastra-in-slide-right 440ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toastra__toast:not([data-leaving="true"])[data-enter="slide-x"][data-side="left"] {
+  animation: toastra-in-slide-left 440ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toastra__toast:not([data-leaving="true"])[data-enter="slide-x"][data-side="center"] {
   animation: toastra-in-fade 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.toastra__toast[data-animation="scale"] {
+.toastra__toast:not([data-leaving="true"])[data-enter="fade"] {
+  animation: toastra-in-fade 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toastra__toast:not([data-leaving="true"])[data-enter="scale"] {
   animation: toastra-in-scale 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+.toastra__toast:not([data-leaving="true"])[data-enter="pop"] {
+  animation: toastra-in-pop 540ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toastra__toast:not([data-leaving="true"])[data-enter="bounce"] {
+  animation: toastra-in-bounce 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.toastra__toast:not([data-leaving="true"])[data-enter="flip"] {
+  animation: toastra-in-flip 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toastra__toast:not([data-leaving="true"])[data-enter="blur"] {
+  animation: toastra-in-blur 480ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toastra__toast:not([data-leaving="true"])[data-enter="rise"] {
+  animation: toastra-in-rise 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toastra__toast:not([data-leaving="true"])[data-enter="zoom"] {
+  animation: toastra-in-zoom 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-.toastra__toast[data-leaving="true"][data-animation="slide"][data-edge="top"] {
-  animation: toastra-out-top 260ms cubic-bezier(0.4, 0, 1, 1) forwards;
+.toastra__toast[data-leaving="true"][data-exit="slide"][data-edge="top"] {
+  animation: toastra-out-slide-top 280ms cubic-bezier(0.4, 0, 1, 1) forwards;
 }
-.toastra__toast[data-leaving="true"][data-animation="slide"][data-edge="bottom"] {
-  animation: toastra-out-bottom 260ms cubic-bezier(0.4, 0, 1, 1) forwards;
+.toastra__toast[data-leaving="true"][data-exit="slide"][data-edge="bottom"] {
+  animation: toastra-out-slide-bottom 280ms cubic-bezier(0.4, 0, 1, 1) forwards;
 }
-.toastra__toast[data-leaving="true"][data-animation="fade"] {
+.toastra__toast[data-leaving="true"][data-exit="slide-x"][data-side="right"] {
+  animation: toastra-out-slide-right 280ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+.toastra__toast[data-leaving="true"][data-exit="slide-x"][data-side="left"] {
+  animation: toastra-out-slide-left 280ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+.toastra__toast[data-leaving="true"][data-exit="slide-x"][data-side="center"],
+.toastra__toast[data-leaving="true"][data-exit="fade"] {
   animation: toastra-out-fade 220ms ease forwards;
 }
-.toastra__toast[data-leaving="true"][data-animation="scale"] {
-  animation: toastra-out-scale 220ms cubic-bezier(0.4, 0, 1, 1) forwards;
+.toastra__toast[data-leaving="true"][data-exit="scale"] {
+  animation: toastra-out-scale 240ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+.toastra__toast[data-leaving="true"][data-exit="pop"] {
+  animation: toastra-out-pop 300ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+.toastra__toast[data-leaving="true"][data-exit="bounce"] {
+  animation: toastra-out-bounce 340ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+.toastra__toast[data-leaving="true"][data-exit="flip"] {
+  animation: toastra-out-flip 360ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+.toastra__toast[data-leaving="true"][data-exit="blur"] {
+  animation: toastra-out-blur 280ms ease forwards;
+}
+.toastra__toast[data-leaving="true"][data-exit="rise"] {
+  animation: toastra-out-rise 280ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+.toastra__toast[data-leaving="true"][data-exit="zoom"] {
+  animation: toastra-out-zoom 260ms cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
-@keyframes toastra-in-top {
-  from { opacity: 0; transform: translate3d(0, -18px, 0) scale(0.96); }
+@keyframes toastra-in-slide-top {
+  from { opacity: 0; transform: translate3d(0, -22px, 0) scale(0.97); }
   to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
-@keyframes toastra-in-bottom {
-  from { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.96); }
+@keyframes toastra-in-slide-bottom {
+  from { opacity: 0; transform: translate3d(0, 22px, 0) scale(0.97); }
   to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes toastra-in-slide-right {
+  from { opacity: 0; transform: translate3d(28px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes toastra-in-slide-left {
+  from { opacity: 0; transform: translate3d(-28px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 @keyframes toastra-in-fade {
-  from { opacity: 0; transform: translate3d(0, 4px, 0); }
-  to { opacity: 1; transform: translate3d(0, 0, 0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 @keyframes toastra-in-scale {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
-@keyframes toastra-out-top {
-  to { opacity: 0; transform: translate3d(0, -12px, 0) scale(0.97); }
+@keyframes toastra-in-pop {
+  0% { opacity: 0; transform: translate3d(0, -14px, 0) scale(0.84); }
+  68% { opacity: 1; transform: translate3d(0, 2px, 0) scale(1.035); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
-@keyframes toastra-out-bottom {
-  to { opacity: 0; transform: translate3d(0, 12px, 0) scale(0.97); }
+@keyframes toastra-in-bounce {
+  0% { opacity: 0; transform: translate3d(0, -30px, 0); }
+  52% { opacity: 1; transform: translate3d(0, 6px, 0); }
+  74% { transform: translate3d(0, -4px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes toastra-in-flip {
+  from { opacity: 0; transform: perspective(920px) rotateX(-22deg) translate3d(0, -10px, 0); }
+  to { opacity: 1; transform: perspective(920px) rotateX(0deg) translate3d(0, 0, 0); }
+}
+@keyframes toastra-in-blur {
+  from { opacity: 0; filter: blur(10px); transform: scale(1.045); }
+  to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+@keyframes toastra-in-rise {
+  from { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.96); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes toastra-in-zoom {
+  from { opacity: 0; transform: scale(0.78); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes toastra-out-slide-top {
+  to { opacity: 0; transform: translate3d(0, -14px, 0) scale(0.98); }
+}
+@keyframes toastra-out-slide-bottom {
+  to { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.98); }
+}
+@keyframes toastra-out-slide-right {
+  to { opacity: 0; transform: translate3d(22px, 0, 0); }
+}
+@keyframes toastra-out-slide-left {
+  to { opacity: 0; transform: translate3d(-22px, 0, 0); }
 }
 @keyframes toastra-out-fade {
-  to { opacity: 0; transform: translate3d(0, -4px, 0); }
+  to { opacity: 0; }
 }
 @keyframes toastra-out-scale {
-  to { opacity: 0; transform: scale(0.94); }
+  to { opacity: 0; transform: scale(0.92); }
+}
+@keyframes toastra-out-pop {
+  0% { opacity: 1; transform: scale(1); }
+  40% { opacity: 1; transform: scale(1.03); }
+  100% { opacity: 0; transform: translate3d(0, -10px, 0) scale(0.9); }
+}
+@keyframes toastra-out-bounce {
+  0% { transform: translate3d(0, 0, 0); }
+  35% { transform: translate3d(0, -6px, 0); }
+  100% { opacity: 0; transform: translate3d(0, 16px, 0); }
+}
+@keyframes toastra-out-flip {
+  to { opacity: 0; transform: perspective(920px) rotateX(16deg) translate3d(0, -8px, 0); }
+}
+@keyframes toastra-out-blur {
+  to { opacity: 0; filter: blur(8px); transform: scale(0.97); }
+}
+@keyframes toastra-out-rise {
+  to { opacity: 0; transform: translate3d(0, -16px, 0); }
+}
+@keyframes toastra-out-zoom {
+  to { opacity: 0; transform: scale(0.82); }
 }
 @keyframes toastra-spin {
   to { transform: rotate(360deg); }
@@ -354,6 +467,7 @@ export const TOASTRA_CSS = `
   .toastra__close {
     animation: none !important;
     transition: none !important;
+    filter: none !important;
   }
 }
 

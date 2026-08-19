@@ -1,5 +1,6 @@
 import type { StoreSnapshot, ToastConfigureOptions, ToastData, ToastraProps, ToastOptions } from "../types";
 import { isFiniteDuration } from "../utils/helpers";
+import { sameAnimation } from "../utils/motion";
 import { createEmitter } from "./events";
 import { applyQueue } from "./queue";
 
@@ -17,7 +18,7 @@ export const DEFAULT_CONFIG: StoreSnapshot["config"] = {
   gap: 14,
   offset: 20,
   swipeDirection: "horizontal",
-  animation: "slide",
+  animation: "pop",
   toastOptions: {},
 };
 
@@ -121,6 +122,7 @@ export function createStore() {
       | "pauseOnHover"
       | "pauseOnFocusLoss"
       | "showProgress"
+      | "animation"
     > {
       const merged = { ...config.toastOptions, ...options };
       const type = merged.type ?? "default";
@@ -140,6 +142,7 @@ export function createStore() {
         pauseOnHover: merged.pauseOnHover ?? config.pauseOnHover,
         pauseOnFocusLoss: merged.pauseOnFocusLoss ?? config.pauseOnFocusLoss,
         showProgress: merged.showProgress ?? config.showProgress,
+        animation: merged.animation ?? config.animation,
       };
     },
   };
@@ -160,7 +163,7 @@ function sameConfig(left: StoreSnapshot["config"], right: StoreSnapshot["config"
     left.gap === right.gap &&
     left.offset === right.offset &&
     left.swipeDirection === right.swipeDirection &&
-    left.animation === right.animation &&
+    sameAnimation(left.animation, right.animation) &&
     left.toastOptions === right.toastOptions
   );
 }
@@ -180,7 +183,7 @@ function pickConfig(value: ToastConfigureOptions | ToastraProps): Partial<StoreS
   if (typeof value.gap === "number") next.gap = value.gap;
   if (value.offset !== undefined) next.offset = value.offset;
   if (value.swipeDirection) next.swipeDirection = value.swipeDirection;
-  if (value.animation) next.animation = value.animation;
+  if (value.animation !== undefined) next.animation = value.animation;
   return next;
 }
 

@@ -12,7 +12,24 @@ export type ToastPosition =
 
 export type ToastTheme = "light" | "dark" | "system";
 
-export type ToastAnimation = "slide" | "fade" | "scale";
+export type ToastMotion =
+  | "slide"
+  | "slide-x"
+  | "fade"
+  | "scale"
+  | "pop"
+  | "bounce"
+  | "flip"
+  | "blur"
+  | "rise"
+  | "zoom";
+
+export type ToastAnimation =
+  | ToastMotion
+  | {
+      enter?: ToastMotion;
+      exit?: ToastMotion;
+    };
 
 export type SwipeDirection = "horizontal" | "vertical" | "left" | "right" | "up" | "down";
 
@@ -40,6 +57,7 @@ export interface ToastOptions {
   className?: string;
   style?: CSSProperties;
   data?: unknown;
+  animation?: ToastAnimation;
 }
 
 export type ToastCustomRender = (toast: ToastData) => ReactNode;
@@ -67,6 +85,7 @@ export interface ToastData {
   paused: boolean;
   remaining: number;
   customRender?: ToastCustomRender;
+  animation?: ToastAnimation;
 }
 
 export interface ToastraProps {

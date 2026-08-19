@@ -1,5 +1,18 @@
 import { useState } from "react";
-import { Toastra, toast, type ToastAnimation, type ToastPosition, type ToastTheme } from "toastra";
+import { Toastra, toast, type ToastMotion, type ToastPosition, type ToastTheme } from "toastra";
+
+const MOTIONS: ToastMotion[] = [
+  "pop",
+  "bounce",
+  "slide",
+  "slide-x",
+  "fade",
+  "scale",
+  "flip",
+  "blur",
+  "rise",
+  "zoom",
+];
 
 const POSITIONS: ToastPosition[] = [
   "top-left",
@@ -15,7 +28,8 @@ export function App() {
   const [theme, setTheme] = useState<ToastTheme>("system");
   const [duration, setDuration] = useState(4000);
   const [maxToasts, setMaxToasts] = useState(5);
-  const [animation, setAnimation] = useState<ToastAnimation>("slide");
+  const [enter, setEnter] = useState<ToastMotion>("pop");
+  const [exit, setExit] = useState<ToastMotion>("blur");
 
   return (
     <div className="page">
@@ -24,7 +38,7 @@ export function App() {
         theme={theme}
         duration={duration}
         maxToasts={maxToasts}
-        animation={animation}
+        animation={{ enter, exit }}
         showProgress
         richColors
       />
@@ -139,11 +153,23 @@ export function App() {
           </select>
         </label>
         <label>
-          Animation
-          <select value={animation} onChange={(event) => setAnimation(event.target.value as ToastAnimation)}>
-            <option value="slide">slide</option>
-            <option value="fade">fade</option>
-            <option value="scale">scale</option>
+          Enter
+          <select value={enter} onChange={(event) => setEnter(event.target.value as ToastMotion)}>
+            {MOTIONS.map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Exit
+          <select value={exit} onChange={(event) => setExit(event.target.value as ToastMotion)}>
+            {MOTIONS.map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
           </select>
         </label>
       </section>

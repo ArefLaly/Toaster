@@ -207,7 +207,7 @@ Default is `system` and follows the OS color scheme.
   showProgress
   richColors
   swipeDirection="horizontal"
-  animation="slide"
+  animation={{ enter: "pop", exit: "blur" }}
 />
 ```
 
@@ -221,6 +221,13 @@ toast.configure({
 ```
 
 When `<Toastra />` is mounted, its props are the live defaults. `toast.configure()` is useful before mount or for values you are not passing as props.
+
+Motions: `pop` `bounce` `slide` `slide-x` `fade` `scale` `flip` `blur` `rise` `zoom`.
+
+```ts
+toast.success("Saved", { animation: "bounce" });
+toast.info("Mixed", { animation: { enter: "flip", exit: "fade" } });
+```
 
 Override tokens:
 
@@ -305,7 +312,7 @@ Returns the same `toast` API for component use.
 | `gap` | `12` | |
 | `offset` | `16` | Number or CSS length |
 | `swipeDirection` | `horizontal` | `left` `right` `up` `down` `vertical` |
-| `animation` | `slide` | `fade` `scale` |
+| `animation` | `pop` | One motion, or `{ enter, exit }` |
 | `toastOptions` | `{}` | Defaults merged into every toast |
 
 ## Advanced Usage

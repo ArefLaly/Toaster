@@ -11,6 +11,7 @@ export type {
   SwipeDirection,
   ToastAction,
   ToastAnimation,
+  ToastMotion,
   ToastConfigureOptions,
   ToastCustomRender,
   ToastData,

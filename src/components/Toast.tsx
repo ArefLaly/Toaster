@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { toast } from "../core/manager";
 import type { SwipeDirection, ToastAnimation, ToastData } from "../types";
+import { MOTION_MS, motionSide, resolveMotion } from "../utils/motion";
 import { PauseableTimer } from "../utils/timer";
 import { ToastActions } from "./ToastActions";
 import { ToastIcon } from "./ToastIcon";
@@ -19,6 +20,8 @@ export function Toast({
   swipeDirection: SwipeDirection;
   edge: "top" | "bottom";
 }) {
+  const motion = resolveMotion(data.animation ?? animation, animation);
+  const side = motionSide(data.position);
   const [leaving, setLeaving] = useState(false);
   const [remaining, setRemaining] = useState(data.remaining);
   const [paused, setPaused] = useState(false);
@@ -66,9 +69,9 @@ export function Toast({
 
   useEffect(() => {
     if (!leaving) return;
-    const id = window.setTimeout(() => toast.dismiss(data.id), 260);
+    const id = window.setTimeout(() => toast.dismiss(data.id), MOTION_MS[motion.exit].exit);
     return () => window.clearTimeout(id);
-  }, [leaving, data.id]);
+  }, [leaving, data.id, motion.exit]);
 
   const pause = () => {
     if (!data.pauseOnHover) return;
@@ -116,8 +119,10 @@ export function Toast({
         className="toastra__toast toastra__toast--custom"
         data-type={data.type}
         data-leaving={leaving}
-        data-animation={animation}
+        data-enter={motion.enter}
+        data-exit={motion.exit}
         data-edge={edge}
+        data-side={side}
         role={data.type === "error" ? "alert" : "status"}
         aria-live={data.type === "error" ? "assertive" : "polite"}
       >
@@ -135,8 +140,10 @@ export function Toast({
       }}
       data-type={data.type}
       data-leaving={leaving}
-      data-animation={animation}
+      data-enter={motion.enter}
+      data-exit={motion.exit}
       data-edge={edge}
+      data-side={side}
       data-progress={data.showProgress ? "true" : "false"}
       role={data.type === "error" ? "alert" : "status"}
       aria-live={data.type === "error" ? "assertive" : "polite"}
