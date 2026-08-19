@@ -36,28 +36,28 @@ export function App() {
       </header>
 
       <div className="actions">
-        <button type="button" onClick={() => toast.success({ title: "Saved!", description: "Your changes have been saved." })}>
+        <button type="button" onClick={() => toast.success({ title: "Changes saved", description: "Your employee record is up to date." })}>
           Success
         </button>
-        <button type="button" onClick={() => toast.error("Something went wrong")}>
+        <button type="button" onClick={() => toast.error({ title: "Could not save", description: "Check the form and try again." })}>
           Error
         </button>
-        <button type="button" onClick={() => toast.warning("Please check your information")}>
+        <button type="button" onClick={() => toast.warning({ title: "Missing fields", description: "Email and department are required." })}>
           Warning
         </button>
-        <button type="button" onClick={() => toast.info("New update available")}>
+        <button type="button" onClick={() => toast.info({ title: "Update available", description: "Version 2.0 is ready to install." })}>
           Info
         </button>
-        <button type="button" onClick={() => toast.loading("Uploading...")}>
+        <button type="button" onClick={() => toast.loading({ title: "Uploading file…", description: "This stays until you update it." })}>
           Loading
         </button>
         <button
           type="button"
           onClick={() =>
             void toast.promise(fakeSave(), {
-              loading: "Saving...",
-              success: "Saved successfully!",
-              error: "Could not save data.",
+              loading: { title: "Saving employee…", description: "Please wait a moment." },
+              success: { title: "Employee created", description: "Ada Lovelace was added." },
+              error: { title: "Save failed", description: "The request did not complete." },
             })
           }
         >
@@ -79,14 +79,27 @@ export function App() {
           onClick={() =>
             toast({
               type: "info",
-              title: "New message",
-              description: "You have received a new message.",
-              action: { label: "View", onClick: () => toast.success("Opened") },
+              title: "New version available",
+              description: "Version 2.0 is ready. You can keep working until you update.",
+              action: { label: "Update now", onClick: () => toast.success("Updated to 2.0") },
               cancel: { label: "Later", onClick: () => {} },
             })
           }
         >
           Action
+        </button>
+        <button
+          type="button"
+          onClick={() =>
+            toast({
+              type: "success",
+              title: "Employee deleted",
+              description: "You can bring this record back.",
+              action: { label: "Undo", onClick: () => toast.success("Employee restored") },
+            })
+          }
+        >
+          Undo
         </button>
       </div>
 

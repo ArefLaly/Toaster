@@ -66,7 +66,7 @@ export function Toast({
 
   useEffect(() => {
     if (!leaving) return;
-    const id = window.setTimeout(() => toast.dismiss(data.id), 180);
+    const id = window.setTimeout(() => toast.dismiss(data.id), 260);
     return () => window.clearTimeout(id);
   }, [leaving, data.id]);
 
@@ -137,6 +137,7 @@ export function Toast({
       data-leaving={leaving}
       data-animation={animation}
       data-edge={edge}
+      data-progress={data.showProgress ? "true" : "false"}
       role={data.type === "error" ? "alert" : "status"}
       aria-live={data.type === "error" ? "assertive" : "polite"}
       tabIndex={0}
@@ -153,11 +154,42 @@ export function Toast({
       <div className="toastra__body">
         {data.title ? <p className="toastra__title">{data.title}</p> : null}
         {data.description ? <p className="toastra__description">{data.description}</p> : null}
-        <ToastActions action={data.action} cancel={data.cancel} />
+        <ToastActions
+          action={
+            data.action
+              ? {
+                  ...data.action,
+                  onClick: (event) => {
+                    data.action?.onClick(event);
+                    requestDismiss();
+                  },
+                }
+              : undefined
+          }
+          cancel={
+            data.cancel
+              ? {
+                  ...data.cancel,
+                  onClick: (event) => {
+                    data.cancel?.onClick(event);
+                    requestDismiss();
+                  },
+                }
+              : undefined
+          }
+        />
       </div>
       {data.closeButton ? (
         <button type="button" className="toastra__close" aria-label="Dismiss notification" onClick={requestDismiss}>
-          ×
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M4 4l8 8M12 4l-8 8"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+            />
+          </svg>
         </button>
       ) : (
         <span />
