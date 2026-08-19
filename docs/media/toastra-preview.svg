@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560" role="img" aria-label="Toastra toast types with bounce animation">
+  <defs>
+    <style>
+      .page { fill: #f4efe6; }
+      .card { fill: #fffdf8; stroke: rgba(48,36,18,0.14); }
+      .card-success { fill: #f2f8f4; }
+      .card-error { fill: #faf3f2; }
+      .card-warning { fill: #faf6f0; }
+      .card-info { fill: #f3f6f9; }
+      .title { font: 700 15px "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif; fill: #1a1713; letter-spacing: -0.3px; }
+      .desc { font: 400 13.5px "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif; fill: #6a6258; }
+      .btn { font: 700 12px "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif; }
+      .bounce {
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+        animation: bounce-in 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      }
+      .spin { transform-origin: 31px 31px; animation: spin 0.85s linear infinite; }
+      .bar { transform-box: fill-box; transform-origin: 0 50%; animation: progress 3.2s linear infinite; }
+      @keyframes bounce-in {
+        0% { opacity: 0; transform: translateY(-28px); }
+        18% { opacity: 1; transform: translateY(6px); }
+        26% { transform: translateY(-4px); }
+        34%, 100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes progress { 0% { transform: scaleX(1); } 80%, 100% { transform: scaleX(0.12); } }
+    </style>
+    <filter id="shadow" x="-8%" y="-12%" width="116%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="rgb(48,32,12)" flood-opacity="0.1"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="0.4" flood-color="rgb(48,32,12)" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <rect class="page" width="760" height="560"/>
+  <text x="48" y="48" class="title" font-size="22">Toastra</text>
+  <text x="48" y="70" class="desc">Default bounce · light · rich colors</text>
+
+  <g class="bounce" filter="url(#shadow)">
+    <rect class="card card-success" x="48" y="92" width="384" height="92"/>
+    <rect x="48" y="92" width="3" height="92" fill="#0d8052"/>
+    <rect x="67" y="110" width="34" height="34" rx="2" fill="rgba(13,128,82,0.12)"/>
+    <g transform="translate(72 115)" fill="none" stroke="#0d8052" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10" fill="#0d8052" opacity="0.14" stroke="none"/>
+      <path d="M8 12.4 10.6 15 16 9.2"/>
+    </g>
+    <text class="title" x="115" y="128">Changes saved</text>
+    <text class="desc" x="115" y="150">Your employee record is up to date.</text>
+    <text class="desc" x="404" y="124" font-size="16">×</text>
+    <rect x="67" y="172" width="346" height="2" fill="rgba(13,128,82,0.16)"/>
+    <rect class="bar" x="67" y="172" width="346" height="2" fill="#0d8052"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="card card-error" x="48" y="200" width="384" height="88"/>
+    <rect x="48" y="200" width="3" height="88" fill="#c4332b"/>
+    <rect x="67" y="218" width="34" height="34" rx="2" fill="rgba(196,51,43,0.12)"/>
+    <g transform="translate(72 223)" fill="none" stroke="#c4332b" stroke-width="1.8" stroke-linecap="round">
+      <circle cx="12" cy="12" r="10" fill="#c4332b" opacity="0.14" stroke="none"/>
+      <path d="M9 9l6 6M15 9l-6 6"/>
+    </g>
+    <text class="title" x="115" y="236">Could not save</text>
+    <text class="desc" x="115" y="258">Check the form and try again.</text>
+    <text class="desc" x="404" y="232" font-size="16">×</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="card card-warning" x="48" y="304" width="384" height="88"/>
+    <rect x="48" y="304" width="3" height="88" fill="#b45309"/>
+    <rect x="67" y="322" width="34" height="34" rx="2" fill="rgba(180,83,9,0.12)"/>
+    <g transform="translate(72 327)" fill="none" stroke="#b45309" stroke-width="1.8" stroke-linecap="round">
+      <path d="M12 4.2 3.8 19.2h16.4L12 4.2Z" fill="#b45309" opacity="0.14" stroke="none"/>
+      <path d="M12 9.2v5.2M12 16.8v.4"/>
+    </g>
+    <text class="title" x="115" y="340">Missing fields</text>
+    <text class="desc" x="115" y="362">Email and department are required.</text>
+    <text class="desc" x="404" y="336" font-size="16">×</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="card card-info" x="48" y="408" width="384" height="118"/>
+    <rect x="48" y="408" width="3" height="118" fill="#1b4f8a"/>
+    <rect x="67" y="426" width="34" height="34" rx="2" fill="rgba(27,79,138,0.12)"/>
+    <g transform="translate(72 431)" fill="none" stroke="#1b4f8a" stroke-width="1.8" stroke-linecap="round">
+      <circle cx="12" cy="12" r="10" fill="#1b4f8a" opacity="0.14" stroke="none"/>
+      <path d="M12 11v6M12 8v.4"/>
+    </g>
+    <text class="title" x="115" y="444">New version available</text>
+    <text class="desc" x="115" y="466">Version 2.0 is ready to install.</text>
+    <rect x="115" y="480" width="92" height="28" fill="#1a1713"/>
+    <text class="btn" x="161" y="498" text-anchor="middle" fill="#fffdf8">Update</text>
+    <rect x="215" y="480" width="68" height="28" fill="none" stroke="rgba(48,36,18,0.12)"/>
+    <text class="btn" x="249" y="498" text-anchor="middle" fill="#1a1713">Later</text>
+    <text class="desc" x="404" y="440" font-size="16">×</text>
+  </g>
+</svg>

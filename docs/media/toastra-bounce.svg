@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="220" viewBox="0 0 760 220" role="img" aria-label="Toastra default bounce animation">
+  <defs>
+    <style>
+      .page { fill: #f4efe6; }
+      .card { fill: #fffdf8; stroke: rgba(48,36,18,0.14); }
+      .title { font: 700 15px "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif; fill: #1a1713; letter-spacing: -0.3px; }
+      .desc { font: 400 13.5px "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif; fill: #6a6258; }
+      .toast {
+        transform-box: fill-box;
+        transform-origin: 50% 0%;
+        animation: bounce-in 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      }
+      @keyframes bounce-in {
+        0% { opacity: 0; transform: translateY(-30px); }
+        20% { opacity: 1; transform: translateY(6px); }
+        30% { transform: translateY(-4px); }
+        40%, 100% { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+    <filter id="bshadow" x="-10%" y="-30%" width="120%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="rgb(48,32,12)" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <rect class="page" width="760" height="220"/>
+  <text x="48" y="40" class="title" font-size="18">animation = bounce</text>
+  <text x="48" y="60" class="desc">Default enter and exit motion</text>
+
+  <g class="toast" filter="url(#bshadow)">
+    <rect class="card" x="188" y="84" width="384" height="92"/>
+    <rect x="188" y="84" width="3" height="92" fill="#0d8052"/>
+    <rect x="207" y="102" width="34" height="34" rx="2" fill="rgba(13,128,82,0.12)"/>
+    <g transform="translate(212 107)" fill="none" stroke="#0d8052" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10" fill="#0d8052" opacity="0.14" stroke="none"/>
+      <path d="M8 12.4 10.6 15 16 9.2"/>
+    </g>
+    <text class="title" x="255" y="120">Successfully saved</text>
+    <text class="desc" x="255" y="142">toast.success() with the default bounce.</text>
+    <text class="desc" x="544" y="116" font-size="16">×</text>
+    <rect x="207" y="164" width="346" height="2" fill="rgba(13,128,82,0.16)"/>
+    <rect x="207" y="164" width="240" height="2" fill="#0d8052"/>
+  </g>
+</svg>

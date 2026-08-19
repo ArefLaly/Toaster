@@ -3,6 +3,7 @@
 ## 0.1.1
 
 - Point package repository, homepage, and issue links to https://github.com/ArefLaly/toastra
+- Add bounce, type, and dark-theme previews to the README
 
 ## 0.1.0
 

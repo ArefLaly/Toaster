@@ -1,8 +1,32 @@
 # Toastra
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ArefLaly/toastra/main/docs/media/toastra-bounce.gif" alt="Toastra default bounce animation" width="720" />
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/toastra"><img alt="npm" src="https://img.shields.io/npm/v/toastra?color=1a1713" /></a>
+  <a href="https://github.com/ArefLaly/toastra"><img alt="GitHub" src="https://img.shields.io/badge/github-ArefLaly%2Ftoastra-1a1713" /></a>
+  <a href="https://github.com/ArefLaly/toastra/blob/main/LICENSE"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-0d8052" /></a>
+</p>
+
 **Beautiful notifications for React.**
 
 Toastra is a lightweight, accessible, and highly customizable toast library for React 18+, React 19, Vite, and Next.js. It ships with a premium default look, CSS variable theming, and a small API you can learn in a minute.
+
+## Preview
+
+Default bounce, square cards, type colors, actions, and a progress bar:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ArefLaly/toastra/main/docs/media/toastra-preview.png" alt="Toastra success, error, warning, and info toasts" width="720" />
+</p>
+
+Dark theme uses the same layout with inverted tokens:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ArefLaly/toastra/main/docs/media/toastra-dark.png" alt="Toastra dark theme toasts" width="720" />
+</p>
 
 ```tsx
 import { Toastra, toast } from "toastra";
@@ -328,8 +352,9 @@ toast.isActive("save-success");
 
 ## Examples
 
-- [Vite demo](./examples/vite)
-- [Next.js App Router](./examples/nextjs)
+- [GitHub](https://github.com/ArefLaly/toastra)
+- [Vite demo](https://github.com/ArefLaly/toastra/tree/main/examples/vite)
+- [Next.js App Router](https://github.com/ArefLaly/toastra/tree/main/examples/nextjs)
 
 ```bash
 npm run storybook
