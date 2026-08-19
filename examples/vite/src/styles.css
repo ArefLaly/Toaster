@@ -1,0 +1,67 @@
+:root {
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: #1c1915;
+  background: #f4efe6;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 4rem 1.5rem 6rem;
+  background:
+    radial-gradient(circle at top right, rgba(201, 162, 39, 0.16), transparent 28%),
+    #f4efe6;
+}
+
+header {
+  max-width: 40rem;
+}
+
+.eyebrow {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #6b6258;
+}
+
+h1 {
+  margin: 0.3rem 0 0;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  letter-spacing: -0.05em;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: #4a433b;
+}
+
+.actions,
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2rem;
+  max-width: 42rem;
+}
+
+button,
+select {
+  border: 1px solid #d9cfc0;
+  background: #fffdf8;
+  color: inherit;
+  border-radius: 999px;
+  min-height: 2.6rem;
+  padding: 0 1rem;
+  font: inherit;
+  font-weight: 700;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
