@@ -1,17 +1,17 @@
 {
   "name": "toastra",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Beautiful notifications for React",
   "license": "MIT",
   "author": "Toastra",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/toastra/toastra.git"
+    "url": "git+https://github.com/ArefLaly/toastra.git"
   },
   "bugs": {
-    "url": "https://github.com/toastra/toastra/issues"
+    "url": "https://github.com/ArefLaly/toastra/issues"
   },
-  "homepage": "https://github.com/toastra/toastra#readme",
+  "homepage": "https://github.com/ArefLaly/toastra#readme",
   "keywords": [
     "react",
     "toast",
