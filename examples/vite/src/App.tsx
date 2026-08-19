@@ -115,6 +115,44 @@ export function App() {
         >
           Undo
         </button>
+        <button
+          type="button"
+          onClick={() => {
+            void toast
+              .confirm({
+                title: "Delete this employee?",
+                description: "Ada Lovelace will be removed. This cannot be undone.",
+                confirm: "Delete",
+                cancel: "Keep",
+                type: "error",
+              })
+              .then((ok) => {
+                if (ok) toast.success({ title: "Employee deleted", description: "Ada Lovelace was removed." });
+                else toast.info("Delete cancelled");
+              });
+          }}
+        >
+          Delete
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            void toast
+              .confirm({
+                title: "Log out?",
+                description: "You will need to sign in again to continue.",
+                confirm: "Log out",
+                cancel: "Stay",
+                type: "warning",
+              })
+              .then((ok) => {
+                if (ok) toast.success("You have been logged out");
+                else toast.info("Still signed in");
+              });
+          }}
+        >
+          Logout
+        </button>
       </div>
 
       <section className="controls">

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type {
   PromiseMessages,
   ToastConfigureOptions,
+  ToastConfirmOptions,
   ToastCustomRender,
   ToastData,
   ToastInput,
@@ -10,6 +11,7 @@ import type {
 } from "../types";
 import { createToastId } from "../utils/id";
 import { normalizeInput, resolveMessage } from "../utils/helpers";
+import { confirmStore } from "./confirm";
 import { store } from "./store";
 
 function buildToast(options: ToastOptions, customRender?: ToastCustomRender): ToastData {
@@ -123,6 +125,9 @@ export const toast = Object.assign(
     },
     configure(options: ToastConfigureOptions): void {
       store.configure(options);
+    },
+    confirm(input: ToastConfirmOptions | string): Promise<boolean> {
+      return confirmStore.open(input);
     },
   },
 );

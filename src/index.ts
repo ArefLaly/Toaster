@@ -13,6 +13,7 @@ export type {
   ToastAnimation,
   ToastMotion,
   ToastConfigureOptions,
+  ToastConfirmOptions,
   ToastCustomRender,
   ToastData,
   ToastInput,

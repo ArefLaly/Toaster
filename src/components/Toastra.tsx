@@ -3,10 +3,12 @@
 import { useEffect } from "react";
 import { store } from "../core/store";
 import { toast } from "../core/manager";
+import { useConfirm } from "../hooks/useConfirm";
 import { useToastra } from "../hooks/useToastra";
 import { ensureToastraStyles } from "../styles/inject";
 import type { ToastPosition, ToastraProps } from "../types";
 import { formatOffset } from "../utils/helpers";
+import { ConfirmDialog } from "./ConfirmDialog";
 import { ToastViewport } from "./ToastViewport";
 
 const POSITIONS: ToastPosition[] = [
@@ -20,6 +22,7 @@ const POSITIONS: ToastPosition[] = [
 
 export function Toastra(props: ToastraProps) {
   const snapshot = useToastra();
+  const { dialog } = useConfirm();
 
   useEffect(() => {
     ensureToastraStyles();
@@ -29,12 +32,13 @@ export function Toastra(props: ToastraProps) {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
+      if (dialog) return;
       const latest = [...snapshot.toasts].reverse().find((item) => item.visible && item.dismissible);
       if (latest) toast.dismiss(latest.id);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [snapshot.toasts]);
+  }, [snapshot.toasts, dialog]);
 
   const theme = resolveTheme(snapshot.config.theme);
   const visible = snapshot.toasts.filter((item) => item.visible);
@@ -58,6 +62,7 @@ export function Toastra(props: ToastraProps) {
           swipeDirection={snapshot.config.swipeDirection}
         />
       ))}
+      {dialog ? <ConfirmDialog dialog={dialog} /> : null}
     </div>
   );
 }

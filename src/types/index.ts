@@ -120,6 +120,27 @@ export interface PromiseMessages<T> {
 
 export type ToastInput = ReactNode | (ToastOptions & { message?: ReactNode });
 
+export interface ToastConfirmOptions {
+  title?: ReactNode;
+  description?: ReactNode;
+  confirm?: ReactNode;
+  cancel?: ReactNode;
+  type?: ToastType;
+  icon?: ReactNode;
+  danger?: boolean;
+}
+
+export interface ConfirmDialogData {
+  id: string;
+  title: ReactNode;
+  description?: ReactNode;
+  confirmLabel: ReactNode;
+  cancelLabel: ReactNode;
+  type: ToastType;
+  icon?: ReactNode;
+  danger: boolean;
+}
+
 export interface StoreSnapshot {
   toasts: readonly ToastData[];
   config: Required<

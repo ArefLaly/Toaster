@@ -219,6 +219,11 @@
   border: 1px solid var(--toastra-cancel-border);
 }
 
+.toastra__button--danger {
+  background: var(--toastra-error);
+  color: #fffdf8;
+}
+
 .toastra__button:hover {
   transform: translateY(-1px);
 }
@@ -451,6 +456,51 @@
   to { transform: rotate(360deg); }
 }
 
+.toastra__confirm {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: start center;
+  padding: 12vh 1rem 2rem;
+  pointer-events: auto;
+}
+
+.toastra__confirm-backdrop {
+  position: absolute;
+  inset: 0;
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background: rgba(22, 19, 15, 0.42);
+}
+
+.toastra__confirm-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 0.85rem 1rem;
+  width: min(22.5rem, 100%);
+  padding: 1.15rem 1.1rem 1.15rem 1.15rem;
+  border: 1px solid var(--toastra-border);
+  background: var(--toastra-background);
+  color: var(--toastra-foreground);
+  box-shadow: var(--toastra-shadow);
+  font-family: var(--toastra-sans);
+  animation: toastra-in-bounce 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.toastra__confirm-card[data-type="success"] { --toastra-accent: var(--toastra-success); }
+.toastra__confirm-card[data-type="error"] { --toastra-accent: var(--toastra-error); }
+.toastra__confirm-card[data-type="warning"] { --toastra-accent: var(--toastra-warning); }
+.toastra__confirm-card[data-type="info"] { --toastra-accent: var(--toastra-info); }
+.toastra__confirm-card[data-type="loading"] { --toastra-accent: var(--toastra-progress); }
+.toastra__confirm-card[data-type="default"] { --toastra-accent: var(--toastra-foreground); }
+
 @media (max-width: 640px) {
   .toastra__viewport {
     width: calc(100vw - 1.5rem);
@@ -462,6 +512,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .toastra__toast,
+  .toastra__confirm-card,
   .toastra__glyph--spin,
   .toastra__progress-bar,
   .toastra__button,

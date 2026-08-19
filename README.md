@@ -123,6 +123,47 @@ await toast.promise(saveEmployee(), {
 
 The returned promise is the original result and also exposes `id`.
 
+## Confirm dialogs
+
+Ask before a destructive action. `toast.confirm()` returns `true` if the user confirms and `false` if they cancel, press Escape, or click the backdrop.
+
+```ts
+const ok = await toast.confirm({
+  title: "Delete this employee?",
+  description: "This cannot be undone.",
+  confirm: "Delete",
+  cancel: "Keep",
+  type: "error",
+});
+
+if (ok) {
+  await deleteEmployee();
+  toast.success("Employee deleted");
+}
+```
+
+Logout:
+
+```ts
+const leave = await toast.confirm({
+  title: "Log out?",
+  description: "You will need to sign in again.",
+  confirm: "Log out",
+  cancel: "Stay",
+  type: "warning",
+});
+
+if (leave) signOut();
+```
+
+A string is treated as the title:
+
+```ts
+if (await toast.confirm("Remove this record?")) {
+  removeRecord();
+}
+```
+
 ## Actions
 
 ```ts
@@ -300,7 +341,7 @@ import type {
 
 `toast(message | options, options?)`  
 `toast.success` · `toast.error` · `toast.warning` · `toast.info` · `toast.loading`  
-`toast.promise` · `toast.custom` · `toast.update` · `toast.dismiss` · `toast.dismissAll` · `toast.isActive` · `toast.configure`
+`toast.promise` · `toast.confirm` · `toast.custom` · `toast.update` · `toast.dismiss` · `toast.dismissAll` · `toast.isActive` · `toast.configure`
 
 ### `useToast()`
 
