@@ -1,4 +1,4 @@
-import css from "./toastra.css";
+import { TOASTRA_CSS } from "./css";
 
 let injected = false;
 
@@ -10,7 +10,7 @@ export function ensureToastraStyles(): void {
   }
   const style = document.createElement("style");
   style.id = "toastra-styles";
-  style.textContent = css;
+  style.textContent = TOASTRA_CSS;
   document.head.appendChild(style);
   injected = true;
 }

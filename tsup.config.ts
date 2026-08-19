@@ -10,9 +10,6 @@ export default defineConfig({
   treeshake: true,
   minify: false,
   external: ["react", "react-dom"],
-  esbuildOptions(options) {
-    options.loader = { ...options.loader, ".css": "text" };
-  },
   async onSuccess() {
     copyFileSync("src/styles/toastra.css", "dist/toastra.css");
     for (const file of ["dist/index.js", "dist/index.cjs"] as const) {
