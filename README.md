@@ -1,13 +1,13 @@
 # Toastra
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ArefLaly/toastra/main/docs/media/app.png" alt="Toastra toast types" width="720" />
+  <img src="https://raw.githubusercontent.com/ArifLaly/toastra/main/docs/media/app.png" alt="Toastra toast types" width="720" />
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/toastra"><img alt="npm" src="https://img.shields.io/npm/v/toastra?color=1a1713" /></a>
-  <a href="https://github.com/ArefLaly/toastra"><img alt="GitHub" src="https://img.shields.io/badge/github-ArefLaly%2Ftoastra-1a1713" /></a>
-  <a href="https://github.com/ArefLaly/toastra/blob/main/LICENSE"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-0d8052" /></a>
+  <a href="https://github.com/ArifLaly/toastra"><img alt="GitHub" src="https://img.shields.io/badge/github-ArifLaly%2Ftoastra-1a1713" /></a>
+  <a href="https://github.com/ArifLaly/toastra/blob/main/LICENSE"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-0d8052" /></a>
 </p>
 
 **Beautiful notifications for React.**
@@ -379,9 +379,9 @@ toast.isActive("save-success");
 
 ## Examples
 
-- [GitHub](https://github.com/ArefLaly/toastra)
-- [Vite demo](https://github.com/ArefLaly/toastra/tree/main/examples/vite)
-- [Next.js App Router](https://github.com/ArefLaly/toastra/tree/main/examples/nextjs)
+- [GitHub](https://github.com/ArifLaly/toastra)
+- [Vite demo](https://github.com/ArifLaly/toastra/tree/main/examples/vite)
+- [Next.js App Router](https://github.com/ArifLaly/toastra/tree/main/examples/nextjs)
 
 ```bash
 npm run storybook

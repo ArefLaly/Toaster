@@ -3,10 +3,11 @@
 ## Unreleased
 
 - Add `toast.confirm()` for SweetAlert-style delete and logout dialogs
+- Point package repository, homepage, and issue links to https://github.com/ArifLaly/toastra
 
 ## 0.1.1
 
-- Point package repository, homepage, and issue links to https://github.com/ArefLaly/toastra
+- Point package repository, homepage, and issue links to https://github.com/ArifLaly/toastra
 - Use `docs/media/app.png` as the README preview
 
 ## 0.1.0
